@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NEXT_PUBLIC_APP_URL = "https://siteflow.app"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_APP_URL = "https://deploy-preview-$DEPLOY_PRIME_ID--siteflow.netlify.app"
